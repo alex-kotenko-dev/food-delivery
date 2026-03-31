@@ -1,4 +1,5 @@
 import type { Shop } from '../../types/index.ts';
+import styles from './ShopCard.module.css';
 
 interface Props {
   shop: Shop;
@@ -7,22 +8,22 @@ interface Props {
 
 export default function ShopCard({ shop, onClick }: Props) {
   return (
-    <div onClick={onClick}>
-      <div >
+    <div className={styles.card} onClick={onClick}>
+      <div className={styles.imgWrap}>
         <img
           src={shop.imageUrl}
           alt={shop.name}
         />
       </div>
-      <div >
-        <div >
-          <h3>{shop.name}</h3>
-          <span>
+      <div className={styles.body}>
+        <div className={styles.header}>
+          <h3 className={styles.name}>{shop.name}</h3>
+          <span className={styles.rating}>
             ⭐ {shop.rating}
           </span>
         </div>
-        <p>{shop.description}</p>
-        <div>
+        <p className={styles.desc}>{shop.description}</p>
+        <div className={styles.meta}>
           <span>{shop.deliveryTime} min</span>
           <span>${shop.deliveryFee.toFixed(2)} delivery</span>
         </div>
