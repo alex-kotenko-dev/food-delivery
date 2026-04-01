@@ -18,7 +18,9 @@ export default function ShopsPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getShops(minRating, maxRating).then(r => setShops(r.data));
+    getShops(minRating, maxRating)
+      .then(r => setShops(r.data))
+      .catch(() => setShops([]));
   }, [minRating, maxRating]);
 
   useEffect(() => {
@@ -26,6 +28,7 @@ export default function ShopsPage() {
     setLoading(true);
     getProducts({ shopId: selectedShop._id, category, sort })
       .then(r => setProducts(r.data))
+      .catch(() => setProducts([]))
       .finally(() => setLoading(false));
   }, [selectedShop, category, sort]);
 

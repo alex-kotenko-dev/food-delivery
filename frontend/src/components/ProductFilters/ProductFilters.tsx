@@ -14,14 +14,14 @@ export default function ProductFilters({ category, sort, onCategoryChange, onSor
     <div className={s.wrap}>
       <div className={s.categories}>
         <button
-          className={s.btn}     
+          className={`${s.btn} ${category === '' ? s.active : ''}`}
           onClick={() => onCategoryChange('')}>
           All
         </button>
         {CATEGORIES.map(c => (
           <button
             key={c}
-            className={s.btn}
+            className={`${s.btn} ${category === c ? s.active : ''}`}
             onClick={() => onCategoryChange(category === c ? '' : c)}
           >
             {c}
@@ -29,6 +29,7 @@ export default function ProductFilters({ category, sort, onCategoryChange, onSor
         ))}
       </div>
       <select
+        className={s.select}
         value={sort}
         onChange={e => onSortChange(e.target.value)}
       >

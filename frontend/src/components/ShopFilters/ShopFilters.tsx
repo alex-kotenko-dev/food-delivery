@@ -16,7 +16,7 @@ export default function ShopFilters({ minRating, onChange }: Props) {
     <div className={s.wrap}>
       <span className={s.label}>Filter by rating:</span>
       <button
-        className={s.btn}         
+        className={`${s.btn} ${minRating === undefined ? s.active : ''}`}
         onClick={() => onChange(undefined, undefined)}
       >
         All
@@ -24,7 +24,7 @@ export default function ShopFilters({ minRating, onChange }: Props) {
       {RANGES.map(r => (
         <button
           key={r.label}
-          className={s.btn} 
+          className={`${s.btn} ${r.min === minRating ? s.active : ''}`}
           onClick={() => onChange(r.min === minRating ? undefined : r.min, r.min === minRating ? undefined : r.max)}
         >
           {r.label}
